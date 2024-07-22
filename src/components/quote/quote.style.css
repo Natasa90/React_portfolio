@@ -1,0 +1,21 @@
+.quoteDiv{
+    background-color: rgb(184, 176, 176);
+}
+.quote {
+   
+    position: relative;
+    animation: move-words 40s linear infinite;
+    margin: 0;
+    font-family: cursive;
+    font-size: 20px;
+    
+  }
+
+  @keyframes move-words {
+    0% {
+      left: 100%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
