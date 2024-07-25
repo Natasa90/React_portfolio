@@ -1,66 +1,46 @@
+import { Input } from '../input'
 import { useState } from 'react'
-import { SubmitButton } from '../submitButton';
 
 
+export const ContactForm = () => {
 
-const inputStyle = {
-    width: '300px',
-    display: 'flex',
-    flexFlow: 'column wrap',
-    gap: '5px'
-}
+    const [name, setName] = useState('')
 
-export const FormData = () => {
-
-    interface Inquiry {
-        name: string; 
-        email: string; 
-        message: string; 
+    const updateName = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const usersName = event.target.value; 
+        setName(usersName); 
 
     }
 
-    const [form, setForm] = useState<Inquiry>({
-        name: '',
-        email: '',
-        message: ''
-    })
+    const [email, setEmail] = useState(''); 
 
-    const updateForm = (event: React.ChangeEvent<HTMLInputElement>) => { 
-        const { name, value } = event.target;
-        setForm ({
-            ...form, 
-            [name]: value
-        })
+    const updateEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const usersEmail = event.target.value; 
+        setEmail(usersEmail)
+
     }
 
-    console.log(form);
+    const [message, setMessage] = useState('')
 
-    return (
-        <div style={inputStyle}>
-            <h2>Let's get in touch!</h2>
-           <input 
-                type='text'
-                name='name'
-                value={form.name}
-                onChange={updateForm}
-                placeholder='Name:'
-           /> 
-           <input
-                type='text'
-                name='email'
-                value={form.email}
-                onChange={updateForm}
-                placeholder='Email:'
-           />  
-           <input
-                type='text'
-                name='message'
-                value={form.message}
-                onChange={updateForm}
-                placeholder='Your message:'
-           />
-           <SubmitButton/>
-        </div>
+    const updateMessage = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const usersMessage = event.target.value; 
+        setMessage(usersMessage); 
+    }
+
+    console.log(name);
+    console.log(email);
+    console.log(message); 
+
+    return(
+        <>
+            <Input name='name' handleOnChange={updateName}/>
+            <Input name='email' handleOnChange={updateEmail}/>
+            <Input name='message' handleOnChange={updateMessage}/>
+        </>
     )
+
+
+
+
 }
-    
+
